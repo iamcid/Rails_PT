@@ -1,0 +1,19 @@
+<h1>Login</h1>
+
+<%= flash[:message] if flash[:message] %>
+
+<%= form_for :therapist do |f| %>
+
+    <%= f.label :email %>
+    <%= f.text_field :email %><br>
+
+    <%= f.label :password %>
+    <%= f.password_field :password %><br>
+
+    <%= f.submit "Login" %>
+<% end %>
+<br>
+or
+<br><br>
+
+<h3>Don't have an account? Please <%= link_to "Sign up", signup_path %> here.</h3>
