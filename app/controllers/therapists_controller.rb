@@ -15,6 +15,8 @@ class TherapistsController < ApplicationController
     end
 
     def show
+        @therapist = Therapist.find_by_id(params[:id])
+        redirect_to '/' if !@therapist
     end
 
     private
