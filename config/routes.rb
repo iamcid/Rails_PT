@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   
-  resources :notes
+  get '/signup', to: 'therapists#new'
+  post '/signup', to: 'therapists#create'
+  # resources :notes
   resources :patients
   resources :appointments
   resources :therapists
