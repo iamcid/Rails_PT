@@ -4,11 +4,11 @@ class ApplicationController < ActionController::Base
 
     private
         def current_user
-            @current_user ||= Therapist.find_by_id(session[:therapist_id]) if session[:therapist_id]
+            @therapist ||= Therapist.find_by(id: session[:therapist_id]) if session[:therapist_id]
         end
 
         def logged_in?
-            !!session[:therapist_id]
+            !!current_user
         end
     
         def redirect_if_not_logged_in

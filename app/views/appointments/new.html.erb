@@ -1,4 +1,6 @@
-<h1>New Appointment</h1>
+<h1>Add an Appointment!!</h1>
+
+<%= flash[:message] if flash[:message] %>
 
 <%= form_for(@appointment) do |f| %>
     <%= f.label :date %>
@@ -8,7 +10,12 @@
     <%= f.time_field  :time %><br><br>
 
     <%= f.label :appointment_type %>
-    <%= f.text_field :appointment_type %><br><br>
+    <%= f.select :appointment_type, ['Initial Evaluation', 'Follow Up'] %><br><br>
+
+    <%= f.fields_for :patient do |p| %>
+        <%= p.collection_select :patient_id, Patient.all, :id, :name %>
+        <%= p.text_field :patient_name %>
+    <% end %>
 
     <%= f.submit %>
 <% end %>

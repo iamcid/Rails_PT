@@ -3,6 +3,6 @@ class Patient < ApplicationRecord
     has_many :therapists, through: :appointments
     has_many :notes
 
-    validates :name, presence: true
+    # validates :name, presence: true
 
 end
