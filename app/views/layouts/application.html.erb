@@ -11,6 +11,13 @@
 
   <body>
     <center><u><h1>Rails Physical Therapy</h1></u></center>
+    <div>
+      <% if logged_in? %>
+        <%= link_to "Add an appointment", new_appointment_path %> /
+        <%= link_to "All appointments", appointments_path %> /
+        <%= link_to "Logout", logout_path, method: "delete" %>
+      <% end %>
+    </div>
     <%= yield %>
   </body>
 </html>

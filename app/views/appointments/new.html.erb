@@ -1,0 +1,14 @@
+<h1>New Appointment</h1>
+
+<%= form_for(@appointment) do |f| %>
+    <%= f.label :date %>
+    <%= f.date_field  :date %><br><br>
+
+    <%= f.label :time %>
+    <%= f.time_field  :time %><br><br>
+
+    <%= f.label :appointment_type %>
+    <%= f.text_field :appointment_type %><br><br>
+
+    <%= f.submit %>
+<% end %>

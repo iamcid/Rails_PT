@@ -15,6 +15,7 @@ class TherapistsController < ApplicationController
     end
 
     def show
+        redirect_if_not_logged_in
         @therapist = Therapist.find_by_id(params[:id])
         redirect_to '/' if !@therapist
     end
