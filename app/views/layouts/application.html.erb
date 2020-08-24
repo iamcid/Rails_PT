@@ -13,8 +13,9 @@
     <center><u><h1>Rails Physical Therapy</h1></u></center>
     <div>
       <% if logged_in? %>
-        <%= link_to "Add an appointment", new_appointment_path %> /
-        <%= link_to "All appointments", therapist_appointments_path(:therapist_id) %> /
+        <%= link_to "Home", therapist_path(@therapist.id) %> /
+        <%= link_to "Create an appointment", new_appointment_path %> /
+        <%= link_to "All your appointments", therapist_appointments_path(@therapist.id) %> /
         <%= link_to "Logout", logout_path, method: "delete" %>
       <% end %>
     </div>

@@ -1,7 +1,22 @@
 class SessionsController < ApplicationController
 
-    # def home
-    # end
+    def home
+    end
+
+    def new
+    end
+
+    def omniauth
+        therapist = Therapist.create_from_omniauth(auth)
+        if therapist.valid?
+            therapist.save
+            session[:therapist_id] = therapist.id
+            redirect_to therapist_path(therapist.id)
+        else
+            flash[:message] = therapist.errors.full_message
+            redirect_to root_path
+        end
+    end
 
     def destroy
         session.clear
@@ -17,6 +32,12 @@ class SessionsController < ApplicationController
             flash[:message] = "Invalid credentials. Please try again."
             redirect_to "/login"
         end
+    end
+
+    private
+
+    def auth
+        request.env['omniauth.auth']
     end
 
 end

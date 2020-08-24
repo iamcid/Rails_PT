@@ -1,4 +1,4 @@
-<h1>Add an Appointment!!</h1>
+<h1>Create an Appointment!!</h1>
 
 <%= flash[:message] if flash[:message] %>
 
@@ -12,10 +12,15 @@
     <%= f.label :appointment_type %>
     <%= f.select :appointment_type, ['Initial Evaluation', 'Follow Up'] %><br><br>
 
-    <%= f.fields_for :patient do |p| %>
-        <%= p.collection_select :patient_id, Patient.all, :id, :name %>
-        <%= p.text_field :patient_name %>
-    <% end %>
+    <h2>Add a patient</h2>
+
+    <%= f.fields_for :patients do |p| %>
+        <%= p.label :name %>
+        <%= p.text_field :name %><br><br>
+
+        <%= p.label :injury_location %>
+        <%= p.select :injury_location, ['Cervical Spine', 'Thoracic Spine' , 'Shoulder' , 'Elbow' , 'Hand' , 'Lumbar Spine' , 'Hip' , 'Knee' , 'Ankle/Foot'] %>
+    <% end %><br><br>
 
     <%= f.submit %>
 <% end %>
