@@ -1,1 +1,9 @@
-<h1>All Your Appointments</h1>
+<u><h1>All Appointments:</h1></u>
+
+<% if @therapist.appointments.empty? %>
+    <h4>No appointments scheduled at this time!</h4>
+<% else %>
+    <% @therapist.appointments.each do |appt| %>
+        -<a href="/therapist/#{@therapist.id}/appointments" %= appt.date %><%= appt.time %><%= appt.appointment_type %> </a><br>
+    <% end %>
+<% end %>

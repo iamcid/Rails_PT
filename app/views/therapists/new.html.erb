@@ -1,5 +1,9 @@
 <h1>Sign Up</h1>
 
+<p style="color: red;">
+    <%= flash[:message] if flash[:message] %>
+</p>
+
 <%= form_for(@therapist) do |f| %>
     <%= f.label :first_name %>
     <%= f.text_field :first_name %><br><br>

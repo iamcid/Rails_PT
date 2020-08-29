@@ -1,9 +1,13 @@
 Rails.application.routes.draw do
-  resources :patients
-  resources :therapists do
+  resources :appointments
+  resources :therapists  do
     resources :appointments
   end
-  resources :appointments
+  resources :patients do
+    resources :appointments
+  end
+  resources :notes
+  
 
   root 'sessions#home'
   

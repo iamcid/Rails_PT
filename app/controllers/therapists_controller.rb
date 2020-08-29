@@ -7,9 +7,11 @@ class TherapistsController < ApplicationController
     def create
         @therapist = Therapist.new(therapist_params)
         if @therapist.save
+            flash[:message] = "Successful signup. Welcome!"
             session[:therapist_id] = @therapist.id
             redirect_to @therapist
         else
+            flash[:message] = "Unsuccessful signup! Please try again!"
             render :new
         end
     end

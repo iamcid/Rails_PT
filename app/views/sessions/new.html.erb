@@ -1,6 +1,8 @@
 <h1>Login</h1>
 
-<%= flash[:message] if flash[:message] %>
+<p style="color: red;">
+    <%= flash[:message] if flash[:message] %>
+</p>
 
 <%= form_for :therapist do |f| %>
 

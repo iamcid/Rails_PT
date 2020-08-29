@@ -14,6 +14,10 @@ class Therapist < ApplicationRecord
             t.password = SecureRandom.hex(17)
         end
     end
+    
+    def upcoming_appointments
+        appointments.order(date: :desc).select { |a| a.date > (Date.now) }
+    end
 
     # validates :first_name, presence: true
     # validates :last_name, presence: true
